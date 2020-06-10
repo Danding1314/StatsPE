@@ -26,7 +26,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class stats extends Command
+class Stats extends Command
 {
     protected $plugin;
 
