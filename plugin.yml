@@ -1,0 +1,5 @@
+name: StatsPE
+main: Fadhel\StatsPE\Main
+version: 1.0.0
+api: 3.0.0
+author: Fadhel

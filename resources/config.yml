@@ -1,0 +1,21 @@
+---
+
+# Scoreboard config. Disabled by default
+enable-scoreboard: false
+title: "&cServer Name"
+lines:
+  - ""
+  - "&bDeaths: &a{deaths}"
+  - "&bKills: &a{kills}"
+  - "&bKDR: &a{kdr}"
+  - "&bStreak: &a{streak}"
+  - "&bBest Streak: &a{best_streak} "
+  - " "
+  - "&cexample.com"
+
+# Calls when player runs /stats. {kills} {deaths} {streak} {best_streak} {kdr}
+stats-message: "&c{player}'s stats\n&bKills: &a{kills}\n&bDeaths: &a{deaths}\n&bKDR: &a{kdr}\n&bStreak: &a{streak}\n&bBest Streak: &a{best_streak}"
+
+# Calls when player runs /stats for unknown player
+error-message: "&f{player}&c not found on the records."
+...
