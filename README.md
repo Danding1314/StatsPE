@@ -10,7 +10,8 @@ An open-source player statics plugin for PocketMine-MP. For more information rea
 ## Features:
 - Built-in scoreboard
 - SQLite3 database
-- Steak/Best Streak counter
+- Streak/Best Streak counter
+- Deaths/Kills counter
 - KDR counter
 - User-friendly
 - Fully configurable
