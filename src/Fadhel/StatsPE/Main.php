@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 namespace Fadhel\StatsPE;
 
-use Fadhel\StatsPE\commands\stats;
+use Fadhel\StatsPE\commands\Stats;
 use pocketmine\plugin\PluginBase;
 use SQLite3;
 
@@ -34,7 +34,7 @@ class Main extends PluginBase
         $this->saveDefaultConfig();
         $this->database = new SQLite3($this->getDataFolder() . "players.db");
         $this->database->exec("CREATE TABLE IF NOT EXISTS players(player VARCHAR(16), username VARCHAR(16), deaths INT DEFAULT 0, kills INT DEFAULT 0, streak INT DEFAULT 0, best INT DEFAULT 0)");
-        $this->getServer()->getCommandMap()->register("statspe", new stats($this));
+        $this->getServer()->getCommandMap()->register("statspe", new Stats($this));
         $this->getServer()->getPluginManager()->registerEvents(new Listeners($this), $this);
     }
 
@@ -124,7 +124,7 @@ class Main extends PluginBase
     /**
      * @param string $player
      */
-    public function addKill(string $player)
+    public function addKill(string $player): void
     {
         $stmt = $this->database->prepare("UPDATE players SET kills = :kills WHERE player = :player");
         $stmt->bindValue(":kills", (int)$this->getKills($player) + 1);
@@ -135,7 +135,7 @@ class Main extends PluginBase
     /**
      * @param string $player
      */
-    public function addDeath(string $player)
+    public function addDeath(string $player): void
     {
         $stmt = $this->database->prepare("UPDATE players SET death = :death WHERE player = :player");
         $stmt->bindValue(":death", (int)$this->getDeaths($player) + 1);
@@ -146,7 +146,7 @@ class Main extends PluginBase
     /**
      * @param string $player
      */
-    public function addStreak(string $player)
+    public function addStreak(string $player): void
     {
         $stmt = $this->database->prepare("UPDATE players SET streak = :streak WHERE player = :player");
         $stmt->bindValue(":streak", (int)$this->getStreak($player) + 1);
@@ -157,7 +157,7 @@ class Main extends PluginBase
     /**
      * @param string $player
      */
-    public function resetStreak(string $player)
+    public function resetStreak(string $player): void
     {
         $stmt = $this->database->prepare("UPDATE players SET streak = :streak WHERE player = :player");
         $stmt->bindValue(":streak", 0);
@@ -169,7 +169,7 @@ class Main extends PluginBase
      * @param string $player
      * @param int $best
      */
-    public function setBestStreak(string $player, int $best)
+    public function setBestStreak(string $player, int $best): void
     {
         $stmt = $this->database->prepare("UPDATE players SET best = :best WHERE player = :player");
         $stmt->bindValue(":best", $best);
