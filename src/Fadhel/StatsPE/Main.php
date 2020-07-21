@@ -195,8 +195,8 @@ class Main extends PluginBase
     {
         $kills = $this->getKills($player);
         $deaths = $this->getDeaths($player);
-        if ($kills !== 0) {
-            if ($kills / $deaths !== 0) {
+        if ($kills > 0) {
+            if ($kills / $deaths > 0) {
                 return number_format($kills / $deaths, 1);
             }
         }
